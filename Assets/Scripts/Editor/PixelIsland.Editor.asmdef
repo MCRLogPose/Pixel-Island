@@ -1,0 +1,20 @@
+{
+    "name": "PixelIsland.Editor",
+    "rootNamespace": "PixelIsland.Editor",
+    "references": [
+        "PixelIsland.Core",
+        "PixelIsland.Environment",
+        "PixelIsland.Player"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

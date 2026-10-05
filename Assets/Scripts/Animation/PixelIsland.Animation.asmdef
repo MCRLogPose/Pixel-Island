@@ -1,0 +1,17 @@
+{
+    "name": "PixelIsland.Animation",
+    "rootNamespace": "PixelIsland.Animation",
+    "references": [
+        "PixelIsland.Core",
+        "PixelIsland.Player"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
