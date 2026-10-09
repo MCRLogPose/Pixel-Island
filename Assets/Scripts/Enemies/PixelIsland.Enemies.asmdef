@@ -1,0 +1,16 @@
+{
+    "name": "PixelIsland.Enemies",
+    "rootNamespace": "PixelIsland.Enemies",
+    "references": [
+        "PixelIsland.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

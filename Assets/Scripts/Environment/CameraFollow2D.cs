@@ -31,6 +31,8 @@ namespace PixelIsland.Environment
         Camera _camera;
         float _velocityX;
         float _velocityY;
+        float _zOffset;
+        bool _zOffsetReady;
 
         public Transform Target
         {
@@ -88,7 +90,7 @@ namespace PixelIsland.Environment
                 self.y = Mathf.SmoothDamp(centre, targetY, ref _velocityY, _smoothTime);
             }
 
-            self.z = _target.position.z;
+            self.z = _target.position.z + ResolveZOffset();
             transform.position = self;
         }
 
@@ -103,9 +105,26 @@ namespace PixelIsland.Environment
             Vector3 self = transform.position;
             self.x = _target.position.x + _offset.x;
             self.y = _target.position.y + _offset.y;
-            self.z = _target.position.z;
+            self.z = _target.position.z + ResolveZOffset();
             transform.position = self;
             _velocityY = 0f;
+        }
+
+        /// <summary>
+        /// Distancia en z que separa la camara de su objetivo. Se fija una sola vez,
+        /// con la posicion con la que se autoro la camara (tipicamente -10), para que
+        /// seguir en x/y no la arrastre a la z de los sprites, donde el near clip la
+        /// dejaria sin dibujar nada.
+        /// </summary>
+        float ResolveZOffset()
+        {
+            if (!_zOffsetReady)
+            {
+                _zOffset = transform.position.z - (_target != null ? _target.position.z : 0f);
+                _zOffsetReady = true;
+            }
+
+            return _zOffset;
         }
     }
 }

@@ -462,6 +462,72 @@ namespace PixelIsland.Tests.EditMode
             Assert.IsFalse(motor.IsRising);
         }
 
+        // ---------------------------------------------------------------
+        // Rebote de dolor (impulso externo)
+        // ---------------------------------------------------------------
+
+        [Test]
+        public void ApplyImpulse_OnFirstStep_OverridesHorizontalControl()
+        {
+            MovementConfig config = Config();
+            PlayerMotor motor = new PlayerMotor(config);
+
+            motor.ApplyImpulse(new Vector2(-4f, 10f), 0.18f);
+
+            Vector2 velocity = motor.Step(Vector2.zero, MoveInput.None, true, Dt);
+
+            Assert.AreEqual(-4f, velocity.x, 0.001f,
+                "El impulso debe mandar sobre la entrada horizontal.");
+            Assert.Greater(velocity.y, 0f, "El brinco debe ir hacia arriba.");
+        }
+
+        [Test]
+        public void ApplyImpulse_ExpiresAndReturnsControl()
+        {
+            MovementConfig config = Config();
+            PlayerMotor motor = new PlayerMotor(config);
+            float lockSeconds = 0.05f;
+
+            motor.ApplyImpulse(new Vector2(-4f, 10f), lockSeconds);
+
+            int steps = Mathf.CeilToInt(lockSeconds / Dt) + 2;
+            Vector2 velocity = Vector2.zero;
+            for (int i = 0; i < steps; i++)
+            {
+                velocity = motor.Step(velocity, MoveInput.None, false, Dt);
+            }
+
+            Assert.IsFalse(motor.IsImpulsing, "El bloqueo de control debe expirar.");
+        }
+
+        [Test]
+        public void ApplyImpulse_StillClampsFallSpeed()
+        {
+            MovementConfig config = Config();
+            PlayerMotor motor = new PlayerMotor(config);
+            motor.ApplyImpulse(new Vector2(0f, 1f), 0.1f);
+
+            Vector2 velocity = Vector2.zero;
+            for (int i = 0; i < 2000; i++)
+            {
+                velocity = motor.Step(velocity, MoveInput.None, false, Dt);
+            }
+
+            Assert.AreEqual(-config.MaxFallSpeed, velocity.y, 0.0001f);
+        }
+
+        [Test]
+        public void Reset_ClearsPendingImpulse()
+        {
+            MovementConfig config = Config();
+            PlayerMotor motor = new PlayerMotor(config);
+            motor.ApplyImpulse(new Vector2(4f, 10f), 1f);
+
+            motor.Reset();
+
+            Assert.IsFalse(motor.IsImpulsing);
+        }
+
         [Test]
         public void Constructor_NullConfig_Throws()
         {

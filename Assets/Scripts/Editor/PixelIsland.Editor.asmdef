@@ -4,7 +4,10 @@
     "references": [
         "PixelIsland.Core",
         "PixelIsland.Environment",
-        "PixelIsland.Player"
+        "PixelIsland.Player",
+        "PixelIsland.Enemies",
+        "PixelIsland.Collectibles",
+        "PixelIsland.UI"
     ],
     "includePlatforms": [
         "Editor"

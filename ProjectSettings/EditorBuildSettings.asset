@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/BeachZone.unity
+    guid: f2d597ce8909cfd469bc6f25fb7c5723
+  - enabled: 1
+    path: Assets/Scenes/ForestZone.unity
+    guid: 74696f3820b35cd448ef22d9b29e9801
+  - enabled: 1
+    path: Assets/Scenes/CaveZone.unity
+    guid: 40bf40780b651bd4eb041d2f785ea7c5
+  - enabled: 1
+    path: Assets/Scenes/AcienttempleZone.unity
+    guid: aeec88a480f7a4a4e8538b772e738c32
   - enabled: 1
     path: Assets/Scenes/ForestLevel.unity
-    guid: 0ef37bd06812d494e9376a4eda27b9d0
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

@@ -1,0 +1,16 @@
+{
+    "name": "PixelIsland.Hazards",
+    "rootNamespace": "PixelIsland.Hazards",
+    "references": [
+        "PixelIsland.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

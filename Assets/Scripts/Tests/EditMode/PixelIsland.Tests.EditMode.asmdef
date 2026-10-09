@@ -6,6 +6,10 @@
         "PixelIsland.Environment",
         "PixelIsland.Player",
         "PixelIsland.Animation",
+        "PixelIsland.Enemies",
+        "PixelIsland.Collectibles",
+        "PixelIsland.Hazards",
+        "PixelIsland.Levels",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

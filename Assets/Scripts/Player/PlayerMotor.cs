@@ -29,6 +29,12 @@ namespace PixelIsland.Player
         /// <summary>True mientras el salto sigue en ascension y se puede cortar.</summary>
         public bool IsRising { get; private set; }
 
+        /// <summary>True mientras un rebote externo (dolor) manda sobre la entrada.</summary>
+        public bool IsImpulsing => _impulseTimer > 0f;
+
+        Vector2 _impulseVelocity;
+        float _impulseTimer;
+
         public PlayerMotor(MovementConfig config)
         {
             Config = config ?? throw new ArgumentNullException(nameof(config));
@@ -54,11 +60,34 @@ namespace PixelIsland.Player
                 Coyote.Arm();
             }
 
+            // Un rebote externo (p.ej. el dolor de los pinchos) manda sobre la
+            // entrada mientras dura: se aplica la gravedad al propio impulso.
+            if (_impulseTimer > 0f)
+            {
+                _impulseTimer -= deltaTime;
+                _impulseVelocity.y = Mathf.Max(
+                    -Config.MaxFallSpeed, _impulseVelocity.y - Config.Gravity * deltaTime);
+                return _impulseVelocity;
+            }
+
             ApplyGravity(ref velocity, grounded, deltaTime);
             ApplyJump(ref velocity, input);
             ApplyHorizontal(ref velocity, input, grounded, deltaTime);
 
             return velocity;
+        }
+
+        /// <summary>
+        /// Impone una velocidad externa (rebote de dolor) que manda sobre la entrada
+        /// durante <paramref name="lockSeconds"/>; despues la gravedad y el control
+        /// normales retoman desde esa velocidad. Logica pura: se testea en EditMode.
+        /// </summary>
+        public void ApplyImpulse(Vector2 velocity, float lockSeconds)
+        {
+            _impulseVelocity = velocity;
+            _impulseTimer = Mathf.Max(0f, lockSeconds);
+            IsRising = false;
+            JumpedThisStep = false;
         }
 
         public void Reset()
@@ -67,6 +96,8 @@ namespace PixelIsland.Player
             JumpBuffer.Clear();
             JumpedThisStep = false;
             IsRising = false;
+            _impulseVelocity = Vector2.zero;
+            _impulseTimer = 0f;
         }
 
         void ApplyGravity(ref Vector2 velocity, bool grounded, float deltaTime)

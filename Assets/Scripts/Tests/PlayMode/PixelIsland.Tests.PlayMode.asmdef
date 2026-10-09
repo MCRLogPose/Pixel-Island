@@ -6,6 +6,7 @@
         "PixelIsland.Environment",
         "PixelIsland.Player",
         "PixelIsland.Animation",
+        "PixelIsland.Hazards",
         "UnityEngine.TestRunner"
     ],
     "includePlatforms": [],

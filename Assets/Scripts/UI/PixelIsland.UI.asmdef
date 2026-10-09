@@ -1,0 +1,20 @@
+{
+    "name": "PixelIsland.UI",
+    "rootNamespace": "PixelIsland.UI",
+    "references": [
+        "PixelIsland.Core",
+        "PixelIsland.Collectibles",
+        "PixelIsland.Levels",
+        "PixelIsland.Player",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

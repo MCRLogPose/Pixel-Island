@@ -147,6 +147,28 @@ namespace PixelIsland.Player
             _states.ChangeState(next);
         }
 
+        /// <summary>
+        /// Aplica un rebote externo (p.ej. el dolor de los pinchos): fija la
+        /// velocidad, cede el control al impulso unos instantes y pasa al estado
+        /// aereo correspondiente. Lo invoca la reaccion de dano del Explorador.
+        /// </summary>
+        public void ApplyImpulse(Vector2 impulse, float lockSeconds = 0f)
+        {
+            if (_body != null)
+            {
+                _body.velocity = impulse;
+            }
+
+            _motor?.ApplyImpulse(impulse, lockSeconds);
+
+            if (_states == null)
+            {
+                return;
+            }
+
+            SetState(impulse.y > 0f ? (IState)_jump : (IState)_fall);
+        }
+
         /// <summary>Orienta el sprite segun el sentido de avance.</summary>
         public void FaceTowards(float signedValue)
         {
