@@ -10,6 +10,8 @@
         "PixelIsland.Collectibles",
         "PixelIsland.Hazards",
         "PixelIsland.Levels",
+        "PixelIsland.UI",
+        "UnityEngine.UI",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

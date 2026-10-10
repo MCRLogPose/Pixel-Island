@@ -24,6 +24,9 @@ namespace PixelIsland.Levels
         [Tooltip("Segundos antes de cargar la siguiente zona, para que se lea el mensaje.")]
         [SerializeField] float _delaySeconds = 1f;
 
+        [Tooltip("Segundos antes de volver al menu al ganar la ultima zona, para leer el mensaje.")]
+        [SerializeField] float _finalDelaySeconds = 2f;
+
         /// <summary>Escena que se cargara al completar el nivel, o null si es la ultima.</summary>
         public string NextScene { get; private set; }
 
@@ -69,8 +72,9 @@ namespace PixelIsland.Levels
             if (IsFinalLevel)
             {
                 Debug.Log("[LevelExit] '" + SceneManager.GetActiveScene().name +
-                          "' es la ultima zona: el juego ha culminado.");
+                          "' es la ultima zona: el juego ha culminado. Volviendo al menu.");
                 GameCompleted?.Invoke();
+                LoadScene(SceneFlow.MenuSceneName, _finalDelaySeconds);
                 return;
             }
 
@@ -81,20 +85,30 @@ namespace PixelIsland.Levels
                 return;
             }
 
-            if (_delaySeconds > 0f)
+            LoadScene(NextScene, _delaySeconds);
+        }
+
+        void LoadScene(string sceneName, float delay)
+        {
+            if (string.IsNullOrEmpty(sceneName))
             {
-                StartCoroutine(LoadAfterDelay());
+                return;
+            }
+
+            if (delay > 0f)
+            {
+                StartCoroutine(LoadAfterDelay(sceneName, delay));
             }
             else
             {
-                SceneManager.LoadScene(NextScene);
+                SceneManager.LoadScene(sceneName);
             }
         }
 
-        IEnumerator LoadAfterDelay()
+        IEnumerator LoadAfterDelay(string sceneName, float delay)
         {
-            yield return new WaitForSeconds(_delaySeconds);
-            SceneManager.LoadScene(NextScene);
+            yield return new WaitForSeconds(delay);
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

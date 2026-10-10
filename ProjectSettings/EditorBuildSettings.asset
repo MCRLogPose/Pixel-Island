@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: bd62f066a19a724419051578242f6eaa
+  - enabled: 1
     path: Assets/Scenes/BeachZone.unity
     guid: f2d597ce8909cfd469bc6f25fb7c5723
   - enabled: 1
