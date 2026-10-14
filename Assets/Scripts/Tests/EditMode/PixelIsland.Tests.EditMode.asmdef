@@ -8,6 +8,7 @@
         "PixelIsland.Animation",
         "PixelIsland.Enemies",
         "PixelIsland.Collectibles",
+        "PixelIsland.Combat",
         "PixelIsland.Hazards",
         "PixelIsland.Levels",
         "PixelIsland.UI",

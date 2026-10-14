@@ -25,10 +25,14 @@ namespace PixelIsland.Player
         [SerializeField] KeyCode _runKey = KeyCode.LeftShift;
         [SerializeField] KeyCode _runAltKey = KeyCode.RightShift;
 
+        [Tooltip("Boton de raton para disparar: 0 izquierdo, 1 derecho, 2 central.")]
+        [SerializeField] int _fireMouseButton = 0;
+
         /// <summary>Ultimo fotograma muestreado. Public para inspeccion y depuracion.</summary>
         public MoveInput Sample;
 
         bool _jumpLatch;
+        bool _fireLatch;
 
         void Update()
         {
@@ -48,11 +52,17 @@ namespace PixelIsland.Player
                 _jumpLatch = true;
             }
 
+            if (Input.GetMouseButtonDown(_fireMouseButton))
+            {
+                _fireLatch = true;
+            }
+
             Sample = new MoveInput(
                 moveX,
                 _jumpLatch,
                 Input.GetKey(_jumpKey),
-                Input.GetKey(_runKey) || Input.GetKey(_runAltKey));
+                Input.GetKey(_runKey) || Input.GetKey(_runAltKey),
+                _fireLatch);
         }
 
         /// <summary>
@@ -67,7 +77,9 @@ namespace PixelIsland.Player
             MoveInput input = Sample;
 
             _jumpLatch = false;
+            _fireLatch = false;
             Sample.JumpPressed = false;
+            Sample.FirePressed = false;
 
             return input;
         }

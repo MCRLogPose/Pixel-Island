@@ -2,7 +2,8 @@
     "name": "PixelIsland.Player",
     "rootNamespace": "PixelIsland.Player",
     "references": [
-        "PixelIsland.Core"
+        "PixelIsland.Core",
+        "PixelIsland.Combat"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

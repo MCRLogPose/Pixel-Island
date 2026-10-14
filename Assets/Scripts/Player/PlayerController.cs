@@ -23,6 +23,9 @@ namespace PixelIsland.Player
         [SerializeField] GroundSensor _groundSensor;
         [SerializeField] SpriteRenderer _spriteRenderer;
 
+        [Tooltip("Disparo del Explorador. Vacio = se resuelve en este GameObject.")]
+        [SerializeField] PlayerShooter _shooter;
+
         [Header("Ajustes de movimiento")]
         [SerializeField] MovementConfig _movement = new MovementConfig();
 
@@ -123,6 +126,13 @@ namespace PixelIsland.Player
             float dt = Time.fixedDeltaTime;
 
             _currentInput = InputSource != null ? InputSource.ReadInput() : MoveInput.None;
+
+            if (_shooter == null)
+            {
+                _shooter = GetComponent<PlayerShooter>();
+            }
+
+            _shooter?.TryFire(_currentInput.FirePressed);
 
             bool grounded = IsGrounded;
             Vector2 velocity = _motor.Step(_body.velocity, _currentInput, grounded, dt);

@@ -17,10 +17,14 @@ namespace PixelIsland.Tests.PlayMode
         /// <summary>Se consume en el siguiente paso fisico.</summary>
         public bool JumpOnce;
 
+        /// <summary>Se consume en el siguiente paso fisico.</summary>
+        public bool FireOnce;
+
         public MoveInput ReadInput()
         {
-            MoveInput input = new MoveInput(MoveX, JumpOnce, JumpHeld, RunHeld);
+            MoveInput input = new MoveInput(MoveX, JumpOnce, JumpHeld, RunHeld, FireOnce);
             JumpOnce = false;
+            FireOnce = false;
             return input;
         }
 
@@ -28,6 +32,11 @@ namespace PixelIsland.Tests.PlayMode
         {
             JumpOnce = true;
             JumpHeld = true;
+        }
+
+        public void PressFire()
+        {
+            FireOnce = true;
         }
     }
 }

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2835523419595113918}
   - component: {fileID: 8233289694017232759}
   - component: {fileID: 673749333519919781}
+  - component: {fileID: 5067372927552028339}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -140,6 +141,7 @@ MonoBehaviour:
   _jumpKey: 119
   _runKey: 304
   _runAltKey: 303
+  _fireMouseButton: 0
 --- !u!114 &7971267185807342801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +157,7 @@ MonoBehaviour:
   _inputSource: {fileID: 6461735204542330692}
   _groundSensor: {fileID: 8195034242905793659}
   _spriteRenderer: {fileID: 2161273519625947301}
+  _shooter: {fileID: 0}
   _movement:
     MoveSpeed: 6
     RunSpeedMultiplier: 1.45
@@ -218,6 +221,24 @@ MonoBehaviour:
   _horizontalSpeed: 4
   _lockSeconds: 0.18
   _lateralEpsilon: 0.05
+--- !u!114 &5067372927552028339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167803168145228477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0381300d97c351544a45edcc1bad650d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canShoot: 1
+  _cooldownSeconds: 2
+  _projectileSpeed: 14
+  _aimDirection: {x: 1, y: 0}
+  _muzzleLocal: {x: 0.7, y: 1}
+  _projectiles: {fileID: 0}
 --- !u!1 &3536676002064815868
 GameObject:
   m_ObjectHideFlags: 0

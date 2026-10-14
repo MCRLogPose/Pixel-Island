@@ -7733,6 +7733,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6812602138849295449, guid: e7c6b843dd42be44aa7c12d4309a0435, type: 3}
   m_PrefabInstance: {fileID: 476806662}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &505918146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 505918148}
+  - component: {fileID: 505918147}
+  m_Layer: 0
+  m_Name: ProjectileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &505918147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505918146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d4c5bd38d884443832883dc7ce9781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 3884540279220554965, guid: 8bff1ccbee7d2d540aa07c2371a47f6a, type: 3}
+  _prewarmCount: 6
+  _maxPooled: 40
+--- !u!4 &505918148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505918146}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &525113128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9952,6 +9999,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5067372927552028339, guid: 5af852ec7ce77a840bc9755a341b1c4d, type: 3}
+      propertyPath: _muzzleLocal.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067372927552028339, guid: 5af852ec7ce77a840bc9755a341b1c4d, type: 3}
+      propertyPath: _muzzleLocal.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067372927552028339, guid: 5af852ec7ce77a840bc9755a341b1c4d, type: 3}
+      propertyPath: _cooldownSeconds
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9004357205648905275, guid: 5af852ec7ce77a840bc9755a341b1c4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -43.29
@@ -10019,3 +10078,4 @@ SceneRoots:
   - {fileID: 326767858}
   - {fileID: 1591160239}
   - {fileID: 894887811}
+  - {fileID: 505918148}
